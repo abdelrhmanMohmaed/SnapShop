@@ -24,3 +24,5 @@ Route::view('profile', 'profile')
     ->name('profile');
 
 require __DIR__.'/auth.php';
+
+Route::name('website.')->group(base_path('routes/website.php'));
