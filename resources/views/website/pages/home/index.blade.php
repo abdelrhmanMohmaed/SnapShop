@@ -8,21 +8,20 @@
             <span>FRUIT FRESH</span>
             <h2>Vegetable <br />100% Organic</h2>
             <p>Free Pickup and Delivery Available</p>
-            <a href="#" class="primary-btn">SHOP NOW</a>
+            <a href="#featured" class="primary-btn">SHOP NOW</a>
         </div>
     </div>
 @endsection
 
 @section('content')
     <!-- Categories Section Begin -->
-    <section class="categories">
+    <section id="categories" class="categories">
         <div class="container">
             <div class="row">
                 <div class="categories__slider owl-carousel">
                     @foreach ($categories as $item)
                         <div class="col-lg-3">
                             <div class="categories__item set-bg" data-setbg="{{ asset($item->picture) }}">
-                                
                                 <h5><a href="{{ $item->id }}">{{ $item->name }}</a></h5>
                             </div>
                         </div>
@@ -34,7 +33,7 @@
     <!-- Categories Section End -->
 
     <!-- Featured Section Begin -->
-    <section class="featured spad">
+    <section id="featured" class="featured spad">
         <div class="container">
             @livewire('website.home.featured-products')<!-- livewire: show product and filter -->
         </div>
@@ -78,7 +77,7 @@
 
                                 <a href="#" class="latest-product__item">
                                     <div class="latest-product__item__pic">
-                                        <img src="{{ asset($item->picture) }}" alt="{{$item->name}}">
+                                        <img src="{{ asset($item->picture) }}" alt="{{ $item->name }}">
                                     </div>
                                     <div class="latest-product__item__text">
                                         <h6>{{ $item->name }}</h6>
@@ -86,14 +85,16 @@
                                     </div>
                                 </a>
 
-                                @if (($index + 1) % 3 == 0 || $index == $latestProducts->count() - 1) </div> @endif
-                            @empty
-                                <p>No products found.</p>
-                            @endforelse
-
+                                @if (($index + 1) % 3 == 0 || $index == $latestProducts->count() - 1)
                         </div>
+                        @endif
+                    @empty
+                        <p>No products found.</p>
+                        @endforelse
+
                     </div>
                 </div>
+            </div>
 
             <div class="col-lg-4 col-md-6">
                 <div class="latest-product__text">

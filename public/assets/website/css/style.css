@@ -32,6 +32,7 @@
 
 html,
 body {
+	scroll-behavior: smooth;
 	height: 100%;
 	font-family: "Cairo", sans-serif;
 	-webkit-font-smoothing: antialiased;
@@ -642,7 +643,7 @@ ol {
 	width: 610px;
 	height: 50px;
 	border: 1px solid #ebebeb;
-	position: relative;
+	/* position: relative; */
 	float: left;
 }
 
