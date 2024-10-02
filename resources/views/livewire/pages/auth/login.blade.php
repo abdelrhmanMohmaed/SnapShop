@@ -10,6 +10,10 @@ new #[Layout('layouts.guest')] class extends Component
 {
     public LoginForm $form;
 
+    // protected $rules = [
+    //     'form.email' => 'required|email',
+    //     'form.password' => 'required|min:6',
+    // ];
     /**
      * Handle an incoming authentication request.
      */

@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Department;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\ServiceProvider;
 
@@ -12,6 +13,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
+        view()->composer('*', function ($view) {
+
+            $view->with('departments',  Department::take(11)->get());
+        });
+
         $loader = \Illuminate\Foundation\AliasLoader::getInstance();
 
         $loader->alias('Debugbar', \Barryvdh\Debugbar\Facades\Debugbar::class);
@@ -22,6 +28,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Model::shouldBeStrict(! $this->app->isProduction());
+        // Model::shouldBeStrict(! $this->app->isProduction());
     }
 }

@@ -51,7 +51,8 @@
                                 href="{{ route('website.home.index') }}">Home</a></li>
                         <li
                             class="{{ request()->routeIs('website.home.shop.index') || request()->routeIs('website.home.shopping-cart') || request()->routeIs('website.home.checkout') || request()->routeIs('website.home.shop.show') ? 'active' : '' }}">
-                            <a href="{{ route('website.home.shop.index') }}">Shop</a></li>
+                            <a href="{{ route('website.home.shop.index') }}">Shop</a>
+                        </li>
 
                         <li><a href="#">Pages</a>
                             <ul class="header__menu__dropdown">
@@ -70,16 +71,8 @@
                     </ul>
                 </nav>
             </div>
-            <div class="col-lg-3">
-                <div class="header__cart">
-                    <ul>
-                        <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                        <li><a href="{{ route('website.home.shopping-cart') }}"><i class="fa fa-shopping-bag"></i>
-                                <span>3</span></a></li>
-                    </ul>
-                    <div class="header__cart__price">item: <span>$150.00</span></div>
-                </div>
-            </div>
+            <!-- header-counters => favourites and cart -->
+            @livewire('website.navbar.header-counters')
         </div>
         <div class="humberger__open">
             <i class="fa fa-bars"></i>
@@ -96,20 +89,12 @@
                 <div class="hero__categories">
                     <div class="hero__categories__all">
                         <i class="fa fa-bars"></i>
-                        <span>All departments</span>
+                        <span>All Departments</span>
                     </div>
                     <ul>
-                        <li><a href="#">Fresh Meat</a></li>
-                        <li><a href="#">Vegetables</a></li>
-                        <li><a href="#">Fruit & Nut Gifts</a></li>
-                        <li><a href="#">Fresh Berries</a></li>
-                        <li><a href="#">Ocean Foods</a></li>
-                        <li><a href="#">Butter & Eggs</a></li>
-                        <li><a href="#">Fastfood</a></li>
-                        <li><a href="#">Fresh Onion</a></li>
-                        <li><a href="#">Papayaya & Crisps</a></li>
-                        <li><a href="#">Oatmeal</a></li>
-                        <li><a href="#">Fresh Bananas</a></li>
+                        @foreach ($departments as $item)
+                            <li><a href="{{$item->id}}">{{$item->name}}</a></li>
+                        @endforeach
                     </ul>
                 </div>
             </div>

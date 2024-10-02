@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Website\Auth\LoginController;
+use App\Http\Controllers\Website\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,7 +20,10 @@ Name = website.
 
 Route::prefix('home')->name('home.')->group(function () {
     
-    Route::view('', 'website.pages.home.index')->name('index');
+    Route::get('', [HomeController::class,'index'])->name('index');
+    
+
+
 
 
     Route::view('shopping-cart', 'website.pages.shopping-cart.index')->name('shopping-cart');
@@ -52,8 +56,3 @@ Route::prefix('home')->name('home.')->group(function () {
         // Route::post('',[LoginController::class,'login'])->name('login');
     });
 });
-
-
-
-
-
