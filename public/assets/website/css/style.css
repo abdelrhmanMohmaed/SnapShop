@@ -875,7 +875,19 @@ ol {
 	-ms-transition: all, 0.5s;
 	-o-transition: all, 0.5s;
 	transition: all, 0.5s;
+	cursor: pointer;
 }
+/* start new style added */
+.featured__item__pic__hover_like_a{
+	background: #7fad39 !important;
+	border-color: #7fad39 !important;
+	cursor: pointer;
+}
+
+.featured__item__pic__hover_like_a i{
+	color: #ffffff !important;
+}
+/* end new style added */
 
 .featured__item__pic__hover li {
 	list-style: none;
@@ -991,6 +1003,7 @@ ol {
 }
 
 .latest-product__item__pic {
+	width: 44%;
 	float: left;
 	margin-right: 26px;
 }

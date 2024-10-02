@@ -26,7 +26,9 @@ class DatabaseSeeder extends Seeder
         ])->syncRoles(RoleEnum::ADMIN);
 
         $this->call([
+            DepartmentSeeder::class,
             CategorySeeder::class,
+            ProductSeeder::class,
         ]);
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',

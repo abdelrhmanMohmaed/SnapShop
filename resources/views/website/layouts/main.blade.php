@@ -8,9 +8,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <title>Snap Shop | @yield('title')</title>
+    <title>Snap-Shop | @yield('title')</title>
 
+    @livewireStyles
     @include('website.layouts.partials.main.styles')
+    <style>
+        .secondary-btn {
+            display: inline-block;
+            font-size: 14px;
+            padding: 10px 28px 10px;
+            color: #ffffff;
+            text-transform: uppercase;
+            font-weight: 700;
+            background: #5a6268;
+            letter-spacing: 2px;
+        }
+    </style>
     @stack('styles')
 </head>
 
@@ -40,7 +53,7 @@
 
     @include('website.layouts.partials.main.footer')
 
-
+    @livewireScripts
     @include('website.layouts.partials.main.scripts')
     @stack('scripts')
 </body>
