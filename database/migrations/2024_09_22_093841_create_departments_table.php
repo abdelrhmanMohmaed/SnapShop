@@ -11,15 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('categories', function (Blueprint $table) {
+        Schema::create('departments', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-<<<<<<< Updated upstream:database/migrations/2024_09_22_093841_create_categories_table.php
-            $table->text('description');
-=======
             $table->string('picture');
             $table->boolean('is_active')->default(0)->comment('1 => Display');
->>>>>>> Stashed changes:database/migrations/2024_09_22_093924_create_categories_table.php
             $table->timestamps();
             $table->softDeletes();
         });
@@ -30,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('categories');
+        Schema::dropIfExists('departments');
     }
 };

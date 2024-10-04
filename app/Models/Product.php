@@ -12,7 +12,11 @@ class Product extends Model
 {
     use HasFactory, SoftDeletes, HasTags; 
     protected $fillable = [
+<<<<<<< Updated upstream
         'category_id', 'text', 'picture', 'summary', 'description', 'quantity','discount_type', 'discount_value' 
+=======
+        'category_id', 'name', 'picture', 'summary', 'description', 'unit', 'price','quantity', 'is_active'
+>>>>>>> Stashed changes
     ];
 
     public function category() : BelongsTo
