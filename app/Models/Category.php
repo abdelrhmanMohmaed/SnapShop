@@ -15,13 +15,14 @@ class Category extends Model
         'department_id', 'name', 'picture', 'is_active'
     ];
 
+    public function scopeActive($query)
+    {
+        return $query->where('is_active', 1);
+    }
+
     public function department() : BelongsTo
     {
         return $this->belongsTo(Department::class);
     }
 
-    public function scopeActive($query)
-    {
-        return $query->where('is_active', 1);
-    }
 }

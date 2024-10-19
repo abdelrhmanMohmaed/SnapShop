@@ -53,8 +53,8 @@
     });
 
     /*------------------
-		Navigation
-	--------------------*/
+        Navigation
+    --------------------*/
     $(".mobile-menu").slicknav({
         prependTo: '#mobile-menu-wrap',
         allowParentLinks: true
@@ -96,7 +96,7 @@
     });
 
 
-    $('.hero__categories__all').on('click', function(){
+    $('.hero__categories__all').on('click', function () {
         $('.hero__categories ul').slideToggle(400);
     });
 
@@ -159,35 +159,42 @@
         autoplay: true
     });
 
-    /*-----------------------
-		Price Range Slider
-	------------------------ */
-    var rangeSlider = $(".price-range"),
-        minamount = $("#minamount"),
-        maxamount = $("#maxamount"),
-        minPrice = rangeSlider.data('min'),
-        maxPrice = rangeSlider.data('max');
-    rangeSlider.slider({
-        range: true,
-        min: minPrice,
-        max: maxPrice,
-        values: [minPrice, maxPrice],
-        slide: function (event, ui) {
-            minamount.val('$' + ui.values[0]);
-            maxamount.val('$' + ui.values[1]);
-        }
-    });
-    minamount.val('$' + rangeSlider.slider("values", 0));
-    maxamount.val('$' + rangeSlider.slider("values", 1));
+    // /*-----------------------
+    //     Price Range Slider
+    // ------------------------ */
+    // var rangeSlider = $(".price-range"),
+    //     minamount = $("#minamount"),
+    //     maxamount = $("#maxamount"),
+    //     minPrice = parseFloat(rangeSlider.data('min')),
+    //     maxPrice = parseFloat(rangeSlider.data('max'));
+
+    // if (!isNaN(minPrice) && !isNaN(maxPrice)) {
+    //     rangeSlider.slider({
+    //         range: true,
+    //         min: minPrice,
+    //         max: maxPrice,
+    //         values: [minPrice, maxPrice],
+    //         slide: function (event, ui) {
+                
+    //             minamount.val(ui.values[0]);
+    //             maxamount.val(ui.values[1]);
+    //         }
+    //     });
+
+    //     minamount.val('$' + rangeSlider.slider("values", 0));
+    //     maxamount.val('$' + rangeSlider.slider("values", 1));
+    // } else {
+    //     console.error('Invalid min or max price');
+    // }
 
     /*--------------------------
         Select
     ----------------------------*/
-    $("select").niceSelect();
+    // $("select").niceSelect();
 
     /*------------------
-		Single Product
-	--------------------*/
+        Single Product
+    --------------------*/
     $('.product__details__pic__slider img').on('click', function () {
 
         var imgurl = $(this).data('imgbigurl');
@@ -200,8 +207,8 @@
     });
 
     /*-------------------
-		Quantity change
-	--------------------- */
+        Quantity change
+    --------------------- */
     var proQty = $('.pro-qty');
     proQty.prepend('<span class="dec qtybtn">-</span>');
     proQty.append('<span class="inc qtybtn">+</span>');

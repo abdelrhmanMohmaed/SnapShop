@@ -15,12 +15,12 @@ return new class extends Migration
             $table->id();
             $table->foreignId('category_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->string('name');
-            $table->text('picture');
+            $table->string('picture');
             $table->text('summary');
             $table->text('description');
-            $table->float('quantity', 8,2);
-            $table->string('discount_type');
-            $table->float('discount_value');
+            $table->integer('quantity');
+            $table->enum('unit',  ['kg', 'piece'])->comment('kg, piece');
+            $table->decimal('price',  8, 2);
             $table->boolean('is_active')->default(0)->comment('1 => Display');
             $table->timestamps();
             $table->softDeletes();

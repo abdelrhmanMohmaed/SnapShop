@@ -29,6 +29,7 @@ class DatabaseSeeder extends Seeder
             DepartmentSeeder::class,
             CategorySeeder::class,
             ProductSeeder::class,
+            DiscountSeeder::class,
         ]);
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',

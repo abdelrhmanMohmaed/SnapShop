@@ -15,16 +15,22 @@ class FeaturedProducts extends Component
     {
         $this->loadProducts();
     }
+
     public function loadProducts(): void
     {
         $this->products = Product::active()
-            ->when($this->filter != '*', function ($query) {
-                return $query->where('category_id', $this->filter);
-            })->inRandomOrder()
+            ->when($this->filter != '*', fn($q) => 
+                $q->whereHas('category', fn($query) => 
+                    $query->where('department_id', $this->filter)
+                )
+            )
             ->with('favorites')
+            ->inRandomOrder()
             ->take($this->limit)
             ->get();
     }
+    
+
     public function updatedFilter($value): void
     {
         $this->filter = $value;
@@ -45,7 +51,6 @@ class FeaturedProducts extends Component
     }
 
 
-
     // Start Actions
     // Start Favourite Action
     public function isFavourite($product): mixed
@@ -53,15 +58,10 @@ class FeaturedProducts extends Component
         return $product->favorites()->where('user_id', auth()->id())->exists();
     }
 
-    public function onProductsUpdated()
-    {
-        $this->render();
-    }
-
     public function toggleFavourite(Product $product)
     {
-        if (!Auth::check()) {
-            return redirect()->route('login');
+        if (!Auth::check()) {                    
+            return to_route('website.home.login.index');
         }
 
         $userId = auth()->id();

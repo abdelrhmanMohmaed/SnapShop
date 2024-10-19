@@ -61,9 +61,9 @@
 
 
 
-    <!-- Latest Product Section Begin -->
     <section class="latest-product spad">
         <div class="container">
+            <!-- Start Latest Product Section Begin -->
             <div class="row">
                 <div class="col-lg-4 col-md-6">
                     <div class="latest-product__text">
@@ -81,20 +81,21 @@
                                     </div>
                                     <div class="latest-product__item__text">
                                         <h6>{{ $item->name }}</h6>
-                                        <span>${{ $item->quantity }}</span>
+                                        <span>${{ $item->price }}</span>
                                     </div>
                                 </a>
 
                                 @if (($index + 1) % 3 == 0 || $index == $latestProducts->count() - 1)
                         </div>
                         @endif
-                    @empty
+                        @empty
                         <p>No products found.</p>
                         @endforelse
 
                     </div>
                 </div>
             </div>
+            <!-- End Latest Product Section Begin -->
 
             <div class="col-lg-4 col-md-6">
                 <div class="latest-product__text">
