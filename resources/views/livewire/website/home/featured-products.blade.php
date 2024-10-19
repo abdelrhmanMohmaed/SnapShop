@@ -2,11 +2,11 @@
     <div class="featured__controls">
         <ul>
             <li class="{{ $filter === '*' ? 'active' : '' }}" wire:click="$set('filter', '*')">All</li>
-            <li class="{{ $filter === '1' ? 'active' : '' }}" wire:click="$set('filter', '1')">Beef</li>
-            <li class="{{ $filter === '2' ? 'active' : '' }}" wire:click="$set('filter', '2')">Chicken</li>
-            <li class="{{ $filter === '4' ? 'active' : '' }}" wire:click="$set('filter', '4')">Vegetables</li>
-            <li class="{{ $filter === '11' ? 'active' : '' }}" wire:click="$set('filter', '11')">Fresh Fish</li>
-            <li class="{{ $filter === '6' ? 'active' : '' }}" wire:click="$set('filter', '6')">Dried Fruits</li>
+            <li class="{{ $filter === '1' ? 'active' : '' }}" wire:click="$set('filter', '1')">Fresh Meat</li>
+            <li class="{{ $filter === '2' ? 'active' : '' }}" wire:click="$set('filter', '2')">Vegetables</li>
+            <li class="{{ $filter === '4' ? 'active' : '' }}" wire:click="$set('filter', '4')">Fresh Berries</li>
+            <li class="{{ $filter === '5' ? 'active' : '' }}" wire:click="$set('filter', '5')">Ocean Foods</li>
+            <li class="{{ $filter === '7' ? 'active' : '' }}" wire:click="$set('filter', '7')">Fast Food</li>
         </ul>
     </div>
     <div class="row featured__filter">
@@ -18,7 +18,7 @@
                         <!-- Livewire component to handle favorites -->
                         <ul class="featured__item__pic__hover">
                             <li><a wire:click="toggleFavourite({{ $item->id }})" @class([
-                                'featured__item__pic__hover_like_a' => $this->isFavourite($item),
+                                'cursor','featured__item__pic__hover_like_a' => $this->isFavourite($item),
                             ])><i
                                         class="fa fa-heart"></i></a></li>
                             <li><a><i class="fa fa-retweet"></i></a></li>

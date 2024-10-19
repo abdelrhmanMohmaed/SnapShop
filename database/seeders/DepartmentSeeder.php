@@ -45,7 +45,7 @@ class DepartmentSeeder extends Seeder
                 'tags' => ['dairy', 'butter', 'eggs'],
             ],
             [
-                'name' => 'Fastfood',
+                'name' => 'Fast Food',
                 'picture' => 'assets/website/img/departments/feature-1.jpg',
                 'tags' => ['fastfood', 'junkfood'],
             ],
@@ -60,7 +60,7 @@ class DepartmentSeeder extends Seeder
                 'tags' => ['frozen', 'convenient'],
             ],
             [
-                'name' => 'Papayaya & Crisps',
+                'name' => 'Papaya & Crisps',
                 'picture' => 'assets/website/img/departments/feature-1.jpg',
                 'tags' => ['snacks', 'papaya'],
             ],

@@ -6,42 +6,47 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Tags\HasTags;
 
 class Product extends Model
 {
-    use HasFactory, SoftDeletes, HasTags;
-    /**
-     * Summary of fillable
-     * @var array
-     */
+    use HasFactory, SoftDeletes, HasTags; 
     protected $fillable = [
-        'category_id', 'name', 'picture', 'summary', 'description', 'quantity','discount_type', 'discount_value', 'is_active'
+        'category_id', 'name', 'picture', 'summary', 'description', 'unit', 'price', 'quantity', 'is_active'
     ];
-    /**
-     * Summary of category
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function category() : BelongsTo
+    public function scopeActive($query)
     {
-        return $this->belongsTo(Category::class);   
+        return $query->where('is_active', 1);
     }
-    /**
-     * Summary of favorites
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     */
+    public function scopeWithActiveDiscounts($query)
+    {
+        return $query->where('is_active', 1)
+            ->whereHas('discounts', function ($q) {
+                $q->where('start_date', '<=', now())
+                    ->where('end_date', '>=', now());
+            });
+    }
+    public function scopeWithOutActiveDiscounts($query)
+    {
+        return $query->where('is_active', 1)
+            ->whereDoesntHave('discounts', function ($q) {
+                $q->where('start_date', '<=', now())
+                ->where('end_date', '>=', now());
+            });
+    }
+
+    public function discounts(): HasMany
+    {
+        return $this->hasMany(Discount::class);
+    }
     public function favorites(): BelongsToMany
     {
         return $this->belongsToMany(User::class, 'favorites');
     }
-    /**
-     * Summary of scopeActive
-     * @param mixed $query
-     * @return mixed
-     */
-    public function scopeActive($query): mixed
+    public function category() : BelongsTo
     {
-        return $query->where('is_active', 1);
+        return $this->belongsTo(Category::class);   
     }
 }

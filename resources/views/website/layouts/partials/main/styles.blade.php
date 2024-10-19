@@ -16,8 +16,15 @@
         overflow-y: auto;
     }
 
-    .search-results li a:hover {
+    /* .search-results li a:hover ,  */
+    .cursor:hover{
         cursor: pointer;
         color: #7fad39 !important;
     }
+    /* Start Shop page */
+    .filter__sort select option{
+        border: 0;
+        font-size: 14px;
+    }
+    /* End Shop page */
 </style>

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Website\Auth\LoginController;
 use App\Http\Controllers\Website\HomeController;
+use App\Http\Controllers\Website\ShopController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,7 +34,7 @@ Route::prefix('home')->name('home.')->group(function () {
     
     Route::prefix('shop')->name('shop.')->group(function () {
 
-        Route::view('', 'website.pages.shop.index')->name('index');
+        Route::get('', [ShopController::class,'index'])->name('index');
         Route::view('shop-details', 'website.pages.shop.show')->name('show');
     });
     

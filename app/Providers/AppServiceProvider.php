@@ -15,7 +15,7 @@ class AppServiceProvider extends ServiceProvider
     {
         view()->composer('*', function ($view) {
 
-            $view->with('departments',  Department::take(11)->get());
+            $view->with('departments',  Department::active()->take(11)->get());
         });
 
         $loader = \Illuminate\Foundation\AliasLoader::getInstance();

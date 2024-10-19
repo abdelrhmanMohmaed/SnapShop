@@ -156,11 +156,121 @@ class CategorySeeder extends Seeder
                 'tags' => ['fruits', 'apples', 'fresh']
             ],
             [
+                'department_id' => 14,
+                'name' => 'Fresh Bananas',
+                'picture' => 'assets/website/img/categories/fresh-bananas.jpg',
+                'tags' => ['fruits', 'bananas', 'fresh']
+            ],
+            [
+                'department_id' => 14,
+                'name' => 'Fresh Oranges',
+                'picture' => 'assets/website/img/categories/fresh-oranges.jpg',
+                'tags' => ['fruits', 'oranges', 'fresh']
+            ],
+            [
+                'department_id' => 14,
+                'name' => 'Fresh Grapes',
+                'picture' => 'assets/website/img/categories/fresh-grapes.jpg',
+                'tags' => ['fruits', 'grapes', 'fresh']
+            ],
+            [
+                'department_id' => 14,
+                'name' => 'Fresh Pineapples',
+                'picture' => 'assets/website/img/categories/fresh-pineapples.jpg',
+                'tags' => ['fruits', 'pineapples', 'fresh']
+            ],
+            [
+                'department_id' => 14,
+                'name' => 'Fresh Watermelons',
+                'picture' => 'assets/website/img/categories/fresh-watermelons.jpg',
+                'tags' => ['fruits', 'watermelons', 'fresh']
+            ],
+            [
+                'department_id' => 14,
+                'name' => 'Fresh Peaches',
+                'picture' => 'assets/website/img/categories/fresh-peaches.jpg',
+                'tags' => ['fruits', 'peaches', 'fresh']
+            ],
+            [
+                'department_id' => 14,
+                'name' => 'Fresh Cherries',
+                'picture' => 'assets/website/img/categories/fresh-cherries.jpg',
+                'tags' => ['fruits', 'cherries', 'fresh']
+            ],
+            [
+                'department_id' => 14,
+                'name' => 'Fresh Avocados',
+                'picture' => 'assets/website/img/categories/fresh-avocados.jpg',
+                'tags' => ['fruits', 'avocados', 'fresh']
+            ],
+            [
+                'department_id' => 14,
+                'name' => 'Fresh Kiwis',
+                'picture' => 'assets/website/img/categories/fresh-kiwis.jpg',
+                'tags' => ['fruits', 'kiwis', 'fresh']
+            ],
+            [
+                'department_id' => 14,
+                'name' => 'Fresh Lemons',
+                'picture' => 'assets/website/img/categories/fresh-lemons.jpg',
+                'tags' => ['fruits', 'lemons', 'fresh']
+            ],
+            [
+                'department_id' => 14,
+                'name' => 'Fresh Limes',
+                'picture' => 'assets/website/img/categories/fresh-limes.jpg',
+                'tags' => ['fruits', 'limes', 'fresh']
+            ],
+            [
+                'department_id' => 14,
+                'name' => 'Fresh Figs',
+                'picture' => 'assets/website/img/categories/fresh-figs.jpg',
+                'tags' => ['fruits', 'figs', 'fresh']
+            ],
+            [
+                'department_id' => 14,
+                'name' => 'Fresh Pomegranates',
+                'picture' => 'assets/website/img/categories/fresh-pomegranates.jpg',
+                'tags' => ['fruits', 'pomegranates', 'fresh']
+            ],
+
+            [
                 'department_id' => 15,
                 'name' => 'Apple Juice',
                 'picture' => 'assets/website/img/categories/apple-juice.jpg',
                 'tags' => ['drinks', 'juice', 'apple']
             ],
+            [
+                'department_id' => 15,
+                'name' => 'Fresh Orange Juice',
+                'picture' => 'assets/website/img/categories/orange-juice.jpg',
+                'tags' => ['drinks', 'juice', 'orange']
+            ],
+            [
+                'department_id' => 15,
+                'name' => 'Grape Juice',
+                'picture' => 'assets/website/img/categories/grape-juice.jpg',
+                'tags' => ['drinks', 'juice', 'grape']
+            ],
+            [
+                'department_id' => 15,
+                'name' => 'Pineapple Juice',
+                'picture' => 'assets/website/img/categories/pineapple-juice.jpg',
+                'tags' => ['drinks', 'juice', 'pineapple']
+            ],
+            [
+                'department_id' => 15,
+                'name' => 'Mango Juice',
+                'picture' => 'assets/website/img/categories/mango-juice.jpg',
+                'tags' => ['drinks', 'juice', 'mango']
+            ],
+            [
+                'department_id' => 15,
+                'name' => 'Mixed Fruit Juice',
+                'picture' => 'assets/website/img/categories/mixed-fruit-juice.jpg',
+                'tags' => ['drinks', 'juice', 'mixed']
+            ],
+
         ];
 
         foreach ($categories as $item) {
