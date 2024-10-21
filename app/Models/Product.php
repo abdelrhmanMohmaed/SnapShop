@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Tags\HasTags;
 
@@ -23,7 +24,7 @@ class Product extends Model
     public function scopeWithActiveDiscounts($query)
     {
         return $query->where('is_active', 1)
-            ->whereHas('discounts', function ($q) {
+            ->whereHas('discount', function ($q) {
                 $q->where('start_date', '<=', now())
                     ->where('end_date', '>=', now());
             });
@@ -31,15 +32,15 @@ class Product extends Model
     public function scopeWithOutActiveDiscounts($query)
     {
         return $query->where('is_active', 1)
-            ->whereDoesntHave('discounts', function ($q) {
+            ->whereDoesntHave('discount', function ($q) {
                 $q->where('start_date', '<=', now())
                 ->where('end_date', '>=', now());
             });
     }
 
-    public function discounts(): HasMany
+    public function discount(): HasOne
     {
-        return $this->hasMany(Discount::class);
+        return $this->hasOne(Discount::class);
     }
     public function favorites(): BelongsToMany
     {
