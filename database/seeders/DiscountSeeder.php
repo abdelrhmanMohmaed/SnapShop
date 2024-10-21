@@ -15,18 +15,19 @@ class DiscountSeeder extends Seeder
      */
     public function run(): void
     {
-        $faker = Factory::create(); // إنشاء كائن Faker
+        Discount::factory()->count(20)->create();
+        // $faker = Factory::create();
 
-        $numberOfDiscounts = 20;
+        // $numberOfDiscounts = 20;
 
-        for ($i = 0; $i < $numberOfDiscounts; $i++) {
-            Discount::create([
-                'product_id' => Product::inRandomOrder()->first()->id,
-                'type' => $faker->randomElement(['percentage', 'fixed']),
-                'value' => $faker->randomFloat(2, 1, 100), 
-                'start_date' => $faker->dateTimeBetween('-1 month', 'now'),
-                'end_date' => $faker->dateTimeBetween('now', '+1 month'),
-            ]);
-        }
+        // for ($i = 0; $i < $numberOfDiscounts; $i++) {
+        //     Discount::create([
+        //         'product_id' => Product::inRandomOrder()->first()->id,
+        //         'type' => $faker->randomElement(['percentage', 'fixed']),
+        //         'value' => $faker->randomFloat(2, 1, 100), 
+        //         'start_date' => $faker->dateTimeBetween('-1 month', 'now'),
+        //         'end_date' => $faker->dateTimeBetween('now', '+1 month'),
+        //     ]);
+        // }
     }
 }

@@ -15,7 +15,7 @@ class SaleOff extends Component
      */
     public function __construct()
     {
-        $this->discountProducts = Product::withActiveDiscounts()->with(['discounts','category'])->get();
+        $this->discountProducts = Product::withActiveDiscounts()->with(['discount','category'])->get();
     }
 
     /**
