@@ -68,7 +68,8 @@
 <script>
     function startCountdown(elementId, endDate) {
         var countdownElement = document.getElementById(elementId);
-        var countDownDate = new Date(endDate).getTime();
+
+        var countDownDate = new Date(endDate).setHours(23, 59, 59, 999);
 
         var countdownInterval = setInterval(function() {
             var now = new Date().getTime();
@@ -79,8 +80,19 @@
             var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            countdownElement.innerHTML = days + "d " + hours + "h "
-                + minutes + "m " + seconds + "s ";
+            var countdownText = "";
+            if (days > 0) {
+                countdownText += days + "d ";
+            }
+            if (hours > 0) {
+                countdownText += hours + "h ";
+            }
+            if (minutes > 0) {
+                countdownText += minutes + "m ";
+            }
+            countdownText += seconds + "s ";
+
+            countdownElement.innerHTML = countdownText;
 
             if (distance < 0) {
                 clearInterval(countdownInterval);
@@ -94,3 +106,4 @@
         startCountdown(element.id, endDate);
     });
 </script>
+

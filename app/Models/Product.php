@@ -25,18 +25,20 @@ class Product extends Model
     {
         return $query->where('is_active', 1)
             ->whereHas('discount', function ($q) {
-                $q->where('start_date', '<=', now())
-                    ->where('end_date', '>=', now());
+                $q->where('start_date', '<=', now()->endOfDay()) 
+                    ->where('end_date', '>=', now()->startOfDay());
             });
     }
+
     public function scopeWithOutActiveDiscounts($query)
     {
         return $query->where('is_active', 1)
             ->whereDoesntHave('discount', function ($q) {
-                $q->where('start_date', '<=', now())
-                ->where('end_date', '>=', now());
+                $q->where('start_date', '<=', now()->endOfDay()) 
+                    ->where('end_date', '>=', now()->startOfDay());
             });
     }
+    
 
     public function discount(): HasOne
     {
