@@ -20,39 +20,33 @@ Name = website.
 */
 
 Route::prefix('home')->name('home.')->group(function () {
-    
-    Route::get('', [HomeController::class,'index'])->name('index');
-    
 
-
-
+    Route::get('', [HomeController::class, 'index'])->name('index');
 
     Route::view('shopping-cart', 'website.pages.shopping-cart.index')->name('shopping-cart');
     Route::view('checkout', 'website.pages.checkout.index')->name('checkout');
     Route::view('contact', 'website.pages.contact.index')->name('contact-us');
 
-    
     Route::prefix('shop')->name('shop.')->group(function () {
 
-        Route::get('', [ShopController::class,'index'])->name('index');
-        Route::view('shop-details', 'website.pages.shop.show')->name('show');
+        Route::get('', [ShopController::class, 'index'])->name('index');
+        Route::get('{product}/shop-details', [ShopController::class, 'show'])->name('show');
     });
-    
+
     Route::prefix('blog')->name('blog.')->group(function () {
 
         Route::view('', 'website.pages.blog.index')->name('index');
         Route::view('blog-details', 'website.pages.blog.show')->name('show');
     });
 
-
     Route::prefix('login')->name('login.')->group(function () {
-    
+
         Route::view('', 'website.pages.auth.login')->name('index');
-        Route::post('',[LoginController::class,'login'])->name('login');
+        Route::post('', [LoginController::class, 'login'])->name('login');
     });
 
     Route::prefix('register')->name('register.')->group(function () {
-    
+
         Route::view('', 'website.pages.auth.register')->name('index');
         // Route::post('',[LoginController::class,'login'])->name('login');
     });

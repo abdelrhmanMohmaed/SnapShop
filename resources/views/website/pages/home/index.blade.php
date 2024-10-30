@@ -35,7 +35,9 @@
     <!-- Featured Section Begin -->
     <section id="featured" class="featured spad">
         <div class="container">
-            @livewire('website.home.featured-products')<!-- livewire: show product and filter -->
+            <!-- livewire: show product and filter -->
+            <livewire:website.home.featured-products />
+            <!-- livewire: show product and filter -->
         </div>
     </section>
     <!-- Featured Section End -->

@@ -4,12 +4,17 @@ namespace App\Livewire\Website\Home;
 
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
-use Livewire\Attributes\On;
 use Livewire\Component;
 
 class FeaturedProducts extends Component
 {
-    public $products = [], $filter = '*', $limit = 8, $product;
+    public $products = [];
+
+    public $filter = '*';
+
+    public $limit = 8;
+
+    public $product;
 
     public function mount(): void
     {
@@ -19,17 +24,14 @@ class FeaturedProducts extends Component
     public function loadProducts(): void
     {
         $this->products = Product::active()
-            ->when($this->filter != '*', fn($q) => 
-                $q->whereHas('category', fn($query) => 
-                    $query->where('department_id', $this->filter)
-                )
+            ->when($this->filter != '*', fn ($q) => $q->whereHas('category', fn ($query) => $query->where('department_id', $this->filter)
+            )
             )
             ->with('favorites')
             ->inRandomOrder()
             ->take($this->limit)
             ->get();
     }
-    
 
     public function updatedFilter($value): void
     {
@@ -47,9 +49,8 @@ class FeaturedProducts extends Component
     public function showLess(): void
     {
         $this->limit -= 8;
-        $this->loadProducts(); 
+        $this->loadProducts();
     }
-
 
     // Start Actions
     // Start Favourite Action
@@ -60,7 +61,7 @@ class FeaturedProducts extends Component
 
     public function toggleFavourite(Product $product)
     {
-        if (!Auth::check()) {                    
+        if (! Auth::check()) {
             return to_route('website.home.login.index');
         }
 
@@ -72,7 +73,7 @@ class FeaturedProducts extends Component
             $product->favorites()->sync([
                 $userId => [
                     'created_at' => now(),
-                    'updated_at' => now()
+                    'updated_at' => now(),
                 ],
             ]);
         }
@@ -81,11 +82,11 @@ class FeaturedProducts extends Component
     }
     // End Favourite Action
     // End Actions
-    
+
     public function render()
     {
         return view('livewire.website.home.featured-products', [
-            'products' => $this->products
+            'products' => $this->products,
         ]);
     }
 }

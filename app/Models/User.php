@@ -13,7 +13,7 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, SoftDeletes, HasRoles;
+    use HasApiTokens, HasFactory, HasRoles, Notifiable, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -48,11 +48,9 @@ class User extends Authenticatable
 
     /**
      * Summary of favorites
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function favorites(): BelongsToMany
     {
         return $this->belongsToMany(Product::class, 'favorites');
     }
-
 }

@@ -2,9 +2,8 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
 use App\Models\Department;
-use Spatie\Tags\Tag;
+use Illuminate\Database\Seeder;
 
 class DepartmentSeeder extends Seeder
 {

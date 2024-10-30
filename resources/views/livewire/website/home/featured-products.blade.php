@@ -14,11 +14,13 @@
             <div class="col-lg-3 col-md-4 col-sm-6 mix {{ $item->name }}">
                 <div class="featured__item">
                     <div class="featured__item__pic">
-                        <img src="{{ asset($item->picture) }}" alt="{{ $item->name }}">
+                        <a href="{{ route('website.home.shop.show', $item->id) }}" rel="noopener noreferrer"><img
+                                src="{{ asset($item->picture) }}" alt="{{ $item->name }}"></a>
                         <!-- Livewire component to handle favorites -->
                         <ul class="featured__item__pic__hover">
                             <li><a wire:click="toggleFavourite({{ $item->id }})" @class([
-                                'cursor','featured__item__pic__hover_like_a' => $this->isFavourite($item),
+                                'cursor',
+                                'featured__item__pic__hover_like_a' => $this->isFavourite($item),
                             ])><i
                                         class="fa fa-heart"></i></a></li>
                             <li><a><i class="fa fa-retweet"></i></a></li>

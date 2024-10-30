@@ -19,8 +19,8 @@ return new class extends Migration
             $table->text('summary');
             $table->text('description');
             $table->integer('quantity');
-            $table->enum('unit',  ['kg', 'piece'])->comment('kg, piece');
-            $table->decimal('price',  8, 2);
+            $table->enum('unit', ['kg', 'piece'])->comment('kg, piece');
+            $table->decimal('price', 8, 2);
             $table->boolean('is_active')->default(0)->comment('1 => Display');
             $table->timestamps();
             $table->softDeletes();

@@ -24,9 +24,9 @@
                     <div>
                         <div class="d-flex justify-content-between my-3">
                             <input type="number" id="minamount" class="form-control mx-2"
-                                wire:model.live.debounce.250ms="minPrice" placeholder="Min Price">
+                                wire:model.live.debounce.300ms="minPrice" placeholder="Min Price">
                             <input type="number" id="maxamount" class="form-control mx-2"
-                                wire:model.live.debounce.250ms="maxPrice" placeholder="Max Price">
+                                wire:model.live.debounce.300ms="maxPrice" placeholder="Max Price">
                         </div>
                     </div>
                 </div>
@@ -72,14 +72,13 @@
         <!-- End Discount Products Section Begin -->
 
 
-
         <div class="row">
             @forelse ($products as $item)
                 <div class="col-lg-4 col-md-6 col-sm-6">
                     <div class="product__item">
                         <div class="product__item__pic set-bg">
-                            <img src="{{ asset($item->picture) }}" alt="{{ $item->name }}" />
-
+                            <a href="{{ route('website.home.shop.show', $item->id) }}" rel="noopener noreferrer"><img
+                                    src="{{ asset($item->picture) }}" alt="{{ $item->name }}"></a>
                             <ul class="product__item__pic__hover">
                                 <li><a wire:click="toggleFavourite({{ $item->id }})"
                                         wire:key="product-{{ $item->id }}" @class([

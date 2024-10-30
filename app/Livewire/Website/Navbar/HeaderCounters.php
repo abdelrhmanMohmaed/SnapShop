@@ -15,11 +15,11 @@ class HeaderCounters extends Component
     {
         $this->updateFavouriteCount();
     }
-    
+
     #[On('favourite-updated')]
     public function updateFavouriteCount()
     {
-        if(Auth::check()) {
+        if (Auth::check()) {
 
             $this->favouriteCount = auth()->user()->favorites()->count();
         } else {

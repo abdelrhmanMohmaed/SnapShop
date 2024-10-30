@@ -7,8 +7,10 @@
             @forelse ($discountProducts as $item)
                 <div class="col-lg-4" wire:ignore.self>
                     <div class="product__discount__item" wire:ignore.self>
-                        <div class="product__discount__item__pic set-bg" data-setbg="{{ asset($item->picture) }}"
-                            wire:ignore.self>
+                        <div class="product__discount__item__pic set-bg" wire:ignore.self>
+                            <a href="{{ route('website.home.shop.show', $item->id) }}" rel="noopener noreferrer"><img
+                                    src="{{ asset($item->picture) }}" alt="{{ $item->name }}" width="90"
+                                    height="270"></a>
                             @if ($item->discount->type == 'percentage')
                                 <div class="product__discount__percent">{{ $item->discount->value }}%</div>
                             @else
@@ -38,7 +40,8 @@
                             <div class="product__item__price">${{ number_format($discountedPrice, 2) }}
                                 <span>${{ $item->price }}</span>
                             </div>
-                            <span id="countdown-{{ $item->id }}" data-end-date="{{ $item->discount->end_date }}"></span>
+                            <span id="countdown-{{ $item->id }}"
+                                data-end-date="{{ $item->discount->end_date }}"></span>
                         </div>
                     </div>
                 </div>
@@ -106,4 +109,3 @@
         startCountdown(element.id, endDate);
     });
 </script>
-

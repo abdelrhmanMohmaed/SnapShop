@@ -9,11 +9,11 @@ use Illuminate\View\View;
 
 class HomeController extends Controller
 {
-    public function index() : View 
+    public function index(): View
     {
         $categories = Category::active()->inRandomOrder()->get();
         $latestProducts = Product::active()->orderBy('id', 'desc')->take(9)->get();
 
-        return view('website.pages.home.index',compact('categories','latestProducts'));
+        return view('website.pages.home.index', compact('categories', 'latestProducts'));
     }
 }

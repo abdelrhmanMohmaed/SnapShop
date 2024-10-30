@@ -7,7 +7,7 @@
                 <ul class="list-group m-0 p-0 list-unstyled">
                     @foreach ($products as $item)
                         <li class="list-group-item d-flex align-items-center p-3 border-bottom" style="background-color: #252525;">
-                            <img src="{{ $item->picture }}" alt="{{ $item->name }}" height="80" width="80" class="img-thumbnail ms-3">
+                            <img src="{{ asset($item->picture) }}" alt="{{ $item->name }}" height="80" width="80" class="img-thumbnail ms-3">
                             <a href="{{ $item->id }}" class="ml-3 text-capitalize" style="color: white">{{ $item->name }}</a>
                         </li>
                     @endforeach
