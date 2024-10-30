@@ -2,7 +2,6 @@
 
 namespace Database\Factories;
 
-use App\Models\Discount;
 use App\Models\Product;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -24,4 +23,3 @@ class DiscountFactory extends Factory
         ];
     }
 }
-

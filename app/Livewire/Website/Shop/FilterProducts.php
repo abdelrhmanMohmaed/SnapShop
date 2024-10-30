@@ -10,16 +10,20 @@ use Livewire\WithPagination;
 
 class FilterProducts extends Component
 {
-    use WithPagination, WithoutUrlPagination;
-    
-    public $sort, $minPrice = 0, $maxPrice = 10000;
+    use WithoutUrlPagination, WithPagination;
+
+    public $sort;
+
+    public $minPrice = 0;
+
+    public $maxPrice = 10000;
 
     public function updatedSort($value): void
     {
         $this->sort = $value;
         $this->resetPage();
     }
-    
+
     public function loadProducts()
     {
         $query = Product::withOutActiveDiscounts()->with('favorites');
@@ -54,7 +58,7 @@ class FilterProducts extends Component
 
         $this->maxPrice = $query->max('price');
         $this->minPrice = $query->min('price');
-        
+
         return $query->paginate(9);
     }
 
@@ -65,7 +69,7 @@ class FilterProducts extends Component
 
     public function toggleFavourite(Product $product)
     {
-        if (!Auth::check()) {
+        if (! Auth::check()) {
             return to_route('website.home.login.index');
         }
 
@@ -82,7 +86,9 @@ class FilterProducts extends Component
             ]);
         }
 
-        if($this->sort == 'favorites') $this->loadProducts();
+        if ($this->sort == 'favorites') {
+            $this->loadProducts();
+        }
         $this->dispatch('favourite-updated');
         $this->dispatch('favourite-updated', ['userId' => $userId]);
     }

@@ -44,7 +44,7 @@ class UserFactory extends Factory
         ]);
     }
 
-    public function configure() : static
+    public function configure(): static
     {
         return $this->afterCreating(function (User $user) {
             $user->assignRole(RoleEnum::USER);

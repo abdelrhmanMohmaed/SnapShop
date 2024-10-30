@@ -56,7 +56,7 @@
 
                         <li><a href="#">Pages</a>
                             <ul class="header__menu__dropdown">
-                                <li><a href="{{ route('website.home.shop.show') }}">Shop Details</a></li>
+                                <li><a href="{{ route('website.home.shop.show',1) }}">Shop Details</a></li>
                                 <li><a href="{{ route('website.home.shopping-cart') }}">Shopping Cart</a></li>
                                 <li><a href="{{ route('website.home.checkout') }}">Check Out</a></li>
                                 <li><a href="{{ route('website.home.blog.show') }}">Blog Details</a></li>

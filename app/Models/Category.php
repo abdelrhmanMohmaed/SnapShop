@@ -10,9 +10,10 @@ use Spatie\Tags\HasTags;
 
 class Category extends Model
 {
-    use HasFactory, SoftDeletes, HasTags;    
+    use HasFactory, HasTags, SoftDeletes;
+
     protected $fillable = [
-        'department_id', 'name', 'picture', 'is_active'
+        'department_id', 'name', 'picture', 'is_active',
     ];
 
     public function scopeActive($query)
@@ -20,9 +21,8 @@ class Category extends Model
         return $query->where('is_active', 1);
     }
 
-    public function department() : BelongsTo
+    public function department(): BelongsTo
     {
         return $this->belongsTo(Department::class);
     }
-
 }

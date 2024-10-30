@@ -10,12 +10,13 @@ use Illuminate\View\Component;
 class SaleOff extends Component
 {
     public $discountProducts = [];
+
     /**
      * Create a new component instance.
      */
     public function __construct()
     {
-        $this->discountProducts = Product::withActiveDiscounts()->with(['discount','category'])->get();
+        $this->discountProducts = Product::withActiveDiscounts()->with(['discount', 'category'])->get();
     }
 
     /**
@@ -23,8 +24,8 @@ class SaleOff extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.website.shop.sale-off',[
-            'discountProducts' => $this->discountProducts
+        return view('components.website.shop.sale-off', [
+            'discountProducts' => $this->discountProducts,
         ]);
     }
 }
