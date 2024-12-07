@@ -13,8 +13,11 @@ return new class extends Migration
     {
         Schema::create('carts', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('user_id')->nullable()->constrained()->onDelete('cascade')->onUpdate('cascade');
+            $table->string('session_id')->nullable();
             $table->enum('status',['open','payment_processing','canceled','closed']);
+            $table->decimal('discount_total',8,2)->default(0);
+            $table->decimal('total_price',8,2);
             $table->timestamps();
             $table->softDeletes();
         });
