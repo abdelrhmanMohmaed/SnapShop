@@ -8,7 +8,7 @@
                     <div class="latest-prdouct__slider__item">
                 @endif
 
-                <a href="#" class="latest-product__item">
+                <a href="{{ route('website.home.shop.show', $item->id) }}" rel="noopener noreferrer" class="latest-product__item">
                     <div class="latest-product__item__pic">
                         <img src="{{ asset($item->picture) }}" alt="{{ $item->name }}">
                     </div>

@@ -5,17 +5,24 @@
                 <div class="sidebar__item">
                     <h4>Department</h4>
                     <ul>
-                        <li><a href="#">Fresh Meat</a></li>
-                        <li><a href="#">Vegetables</a></li>
-                        <li><a href="#">Fruit & Nut Gifts</a></li>
-                        <li><a href="#">Fresh Berries</a></li>
-                        <li><a href="#">Ocean Foods</a></li>
-                        <li><a href="#">Butter & Eggs</a></li>
-                        <li><a href="#">Fastfood</a></li>
-                        <li><a href="#">Fresh Onion</a></li>
-                        <li><a href="#">Papayaya & Crisps</a></li>
-                        <li><a href="#">Oatmeal</a></li>
-                        <li><a href="#">Oatmeal</a></li>
+                        <li>
+                            <a @class([
+                                'sidebar_custom',
+                                'sidebar_choice' => $departmentId == '' || null,
+                            ]) wire:click="filterByDepartment('all_product')">All
+                                Product</a>
+                        </li>
+                        @forelse ($departments as $item)
+                            <li>
+                                <a @class([
+                                    'sidebar_custom',
+                                    'sidebar_choice' => $departmentId == $item->id,
+                                ])
+                                    wire:click="filterByDepartment({{ $item->id }})">{{ $item->name }}</a>
+                            </li>
+                        @empty
+                            <li><a href="#">Empty</a></li>
+                        @endforelse
                     </ul>
                 </div>
 
@@ -97,21 +104,8 @@
                     </div>
                 </div>
             @empty
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg"
-                            data-setbg="{{ asset('assets/website/img/products/product-1.jpg') }}">
-                            <ul class="product__item__pic__hover">
-                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#"></a></h6>
-                            <h5></h5>
-                        </div>
-                    </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 justify-content-center align-item-center">
+                    <img src="{{ asset('assets/website/img/coming-soon.svg') }}" alt="Coming Soon" srcset="Coming Soon">
                 </div>
             @endforelse
         </div>

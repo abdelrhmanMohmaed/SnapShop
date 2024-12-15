@@ -1267,6 +1267,17 @@ ol {
 	visibility: hidden;
 }
 
+.sidebar_custom {
+    padding: 0 11px;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+.sidebar_choice {
+	font-weight: 600;
+    background-color: #7fad39;
+    color: white !important;
+}
 /*---------------------
   Shop Grid
 -----------------------*/

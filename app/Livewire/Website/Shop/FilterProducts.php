@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Website\Shop;
 
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
@@ -12,11 +13,9 @@ class FilterProducts extends Component
 {
     use WithoutUrlPagination, WithPagination;
 
-    public $sort;
+    public $sort, $departmentId;
 
-    public $minPrice = 0;
-
-    public $maxPrice = 10000;
+    public $minPrice = 0, $maxPrice = 10000;
 
     public function updatedSort($value): void
     {
@@ -24,9 +23,29 @@ class FilterProducts extends Component
         $this->resetPage();
     }
 
+    public function filterByDepartment($departmentId)
+    {
+        if ($departmentId == 'all_product') {
+            $this->departmentId = null;
+            $this->minPrice = 1;
+            $this->maxPrice = 10000;
+        } else {
+            $this->departmentId = $departmentId;
+        }
+    }
+
     public function loadProducts()
     {
         $query = Product::withOutActiveDiscounts()->with('favorites');
+
+        if ($this->departmentId) {
+
+            $categoryIds = Category::where('department_id', $this->departmentId)->pluck('id');
+            $query->whereIn('category_id', $categoryIds);
+
+            $this->maxPrice = $query->max('price');
+            $this->minPrice = $query->min('price');
+        }
 
         if ($this->minPrice && $this->maxPrice) {
 
@@ -69,7 +88,7 @@ class FilterProducts extends Component
 
     public function toggleFavourite(Product $product)
     {
-        if (! Auth::check()) {
+        if (!Auth::check()) {
             return to_route('website.home.login.index');
         }
 
@@ -89,7 +108,8 @@ class FilterProducts extends Component
         if ($this->sort == 'favorites') {
             $this->loadProducts();
         }
-        $this->dispatch('favourite-updated');
+
+        // $this->dispatch('favourite-updated');
         $this->dispatch('favourite-updated', ['userId' => $userId]);
     }
 

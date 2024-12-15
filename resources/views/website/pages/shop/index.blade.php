@@ -30,7 +30,7 @@
 
     <!-- Product Section Begin -->
     <section class="product spad">
-        <livewire:website.shop.filter-products />
+        <livewire:website.shop.filter-products :department-id="$selectedDepartmentId"/>
     </section>
     <!-- Product Section End -->
 @endsection
