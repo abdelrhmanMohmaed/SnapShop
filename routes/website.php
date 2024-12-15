@@ -29,7 +29,7 @@ Route::prefix('home')->name('home.')->group(function () {
 
     Route::prefix('shop')->name('shop.')->group(function () {
 
-        Route::get('', [ShopController::class, 'index'])->name('index');
+        Route::get('{department_id?}', [ShopController::class, 'index'])->name('index');
         Route::get('{product}/shop-details', [ShopController::class, 'show'])->name('show');
     });
 

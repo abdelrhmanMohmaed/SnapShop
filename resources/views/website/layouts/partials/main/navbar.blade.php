@@ -56,7 +56,7 @@
 
                         <li><a href="#">Pages</a>
                             <ul class="header__menu__dropdown">
-                                <li><a href="{{ route('website.home.shop.show',1) }}">Shop Details</a></li>
+                                {{-- <li><a href="{{ route('website.home.shop.show',1) }}">Shop Details</a></li>     --}}
                                 <li><a href="{{ route('website.home.shopping-cart') }}">Shopping Cart</a></li>
                                 <li><a href="{{ route('website.home.checkout') }}">Check Out</a></li>
                                 <li><a href="{{ route('website.home.blog.show') }}">Blog Details</a></li>
@@ -93,7 +93,9 @@
                     </div>
                     <ul>
                         @foreach ($departments as $item)
-                            <li><a href="{{ $item->id }}">{{ $item->name }}</a></li>
+                            <li><a
+                                    href="{{ route('website.home.shop.index', ['department_id' => $item->id]) }}">{{ $item->name }}</a>
+                            </li>
                         @endforeach
                     </ul>
                 </div>
@@ -102,9 +104,8 @@
                 <div class="hero__search">
                     <div class="hero__search__form">
                         <form>
-                            <a href="#categories" class="hero__search__categories">
-                                All Categories
-                            </a>
+                            <a href="{{ route('website.home.index') }}/#categories" class="hero__search__categories">All
+                                Categories </a>
                             @livewire('website.navbar.search')<!-- Search-Components -->
                         </form>
                     </div>

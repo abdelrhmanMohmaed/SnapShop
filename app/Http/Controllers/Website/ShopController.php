@@ -3,15 +3,21 @@
 namespace App\Http\Controllers\Website;
 
 use App\Http\Controllers\Controller;
+use App\Models\Department;
 use App\Models\Product;
+use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class ShopController extends Controller
 {
-    public function index(): View
+    public function index(Request $request, $department_id = null): View
     {
-        return view('website.pages.shop.index');
+        $departments          = Department::active()->get();
+        $selectedDepartmentId = $department_id;
+
+        return view('website.pages.shop.index', compact('departments', 'selectedDepartmentId'));
     }
+
 
     public function show(Product $product): View
     {
